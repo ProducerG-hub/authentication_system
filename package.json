@@ -1,0 +1,29 @@
+{
+  "name": "auth_system",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "authentication",
+    "express",
+    "jwt",
+    "bcrypt",
+    "PostgreSQL"
+  ],
+  "author": "MLUE TECH",
+  "license": "ISC",
+  "description": "the authentication system using express for routing, bcrypt for hashing, and jwt for token generation and using PostgreSQL database.",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
