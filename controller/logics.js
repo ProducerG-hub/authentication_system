@@ -90,3 +90,33 @@ module.exports.loginUser = async (req, res) => {
     });
   }
 }
+
+//update user logic
+module.exports.update_User = async (req, res) => {
+  const { id } = req.params;
+  const { name, email } = req.body; 
+  try {
+    const query = `UPDATE users SET name = $1, email = $2 WHERE id = $3 RETURNING id, name, email`;
+    const values = [name, email, id]; 
+    const result = await pool.query(query, values);
+    const user = result.rows[0];
+
+    if (!user) {
+      return res.status(404).json({ 
+          success: false,
+          message: 'User not found' 
+      });
+    }
+    res.status(200).json({ 
+        success: true,
+        message: 'User updated successfully', 
+        user 
+    }); 
+  } catch (error) {
+    console.error('Error updating user:', error);
+    res.status(500).json({
+        success: false,
+        message: 'Internal server error' 
+    });
+  }
+}
