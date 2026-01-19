@@ -120,3 +120,59 @@ module.exports.update_User = async (req, res) => {
     });
   }
 }
+
+//delete user logic
+module.exports.delete_User = async (req, res) => {
+  const { id } = req.params; // fetching user id from request parameters
+  try {
+    const query = `DELETE FROM users WHERE id = $1 RETURNING id`;
+    const values = [id]; 
+    const result = await pool.query(query, values);
+    const user = result.rows[0]; 
+    if (!user) {
+      return res.status(404).json({ 
+          success: false,
+          message: 'User not found'
+      });
+    }
+    res.status(200).json({ 
+        success: true,
+        message: 'User deleted successfully' 
+    }); 
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    res.status(500).json({
+        success: false,
+        message: 'Internal server error' 
+    });
+  }
+}
+
+// searching user by id logics
+module.exports.find_user= async (req, res) => {
+  const { id } = req.params; // fetching user id from request parameters
+  try {
+    const query = `SELECT id, name, email FROM users WHERE id = $1`;
+    const values = [id]; 
+    const result = await pool.query(query, values);
+    const user = result.rows[0];
+
+    if (!user) {
+      return res.status(404).json({ 
+          success: false,
+          message: 'User not found' 
+      });
+    }
+    res.status(200).json({ 
+        success: true,
+        message: 'User found successfully', 
+        user 
+    }); 
+  } catch (error) {
+    console.error('Error finding user:', error);
+    res.status(500).json({
+        success: false,
+        message: 'Internal server error' 
+    });
+  }
+}
