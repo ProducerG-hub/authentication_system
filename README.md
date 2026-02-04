@@ -50,12 +50,21 @@ Before running this project, ensure you have the following installed:
     
     \c auth_db
 
+    -- Create Roles table (referenced by users)
+    CREATE TABLE roles (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(50) NOT NULL
+    );
+
+    -- Insert default roles
+    INSERT INTO roles (name) VALUES ('user'), ('admin');
+
     CREATE TABLE users (
         id SERIAL PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
         email VARCHAR(255) UNIQUE NOT NULL,
         password VARCHAR(255) NOT NULL,
-        role_id INT DEFAULT 1,
+        role_id INT DEFAULT 1 REFERENCES roles(id),
         is_active BOOLEAN DEFAULT TRUE,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
