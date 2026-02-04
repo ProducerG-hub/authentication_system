@@ -6,6 +6,12 @@ const jwt = require('jsonwebtoken');
 
 module.exports.registerUser = async (req, res) => {
   const { name, email, password } = req.body;
+  if(!name || !email || !password) {
+    return  res.status(400).json({
+        success: false,
+        message: 'Name, email, and password are required'
+    });
+  }
   const client = await pool.connect();
   
   try {
@@ -48,6 +54,12 @@ module.exports.registerUser = async (req, res) => {
 
 module.exports.loginUser = async (req, res) => {
   const { email, password } = req.body;
+  if(!email || !password) {
+    return res.status(400).json({ 
+        success: false,
+        message: 'Email and password are required' 
+    });
+  }
 
   try {
     const query = `SELECT id, email, password, role_id, is_active FROM users WHERE email = $1`;
@@ -95,6 +107,12 @@ module.exports.loginUser = async (req, res) => {
 module.exports.update_User = async (req, res) => {
   const { id } = req.params;
   const { name, email } = req.body; 
+  if(!name || !email) {
+    return res.status(400).json({ 
+        success: false,
+        message: 'Name and email are required' 
+    });
+  }
   try {
     const query = `UPDATE users SET name = $1, email = $2 WHERE id = $3 RETURNING id, name, email`;
     const values = [name, email, id]; 
@@ -123,7 +141,7 @@ module.exports.update_User = async (req, res) => {
 
 //delete user logic
 module.exports.delete_User = async (req, res) => {
-  const { id } = req.params; // fetching user id from request parameters
+  const { id } = req.params; 
   try {
     const query = `DELETE FROM users WHERE id = $1 RETURNING id`;
     const values = [id]; 
