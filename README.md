@@ -118,7 +118,7 @@ The base URL for all authentication routes is: `http://localhost:3000/api/auth`
     ```json
     {
         "name": "David Francis",
-        "email": "david@example.com",
+        "email": "davidfrancis@gmail.com",
         "password": "securepassword123"
     }
     ```
@@ -129,7 +129,7 @@ The base URL for all authentication routes is: `http://localhost:3000/api/auth`
 -   **Body:**
     ```json
     {
-        "email": "david@example.com",
+        "email": "davidfrancis@gmail.com",
         "password": "securepassword123"
     }
     ```
@@ -141,8 +141,8 @@ The base URL for all authentication routes is: `http://localhost:3000/api/auth`
 -   **Body:** (Fields to update)
     ```json
     {
-        "name": "David Updated",
-        "email": "newemail@example.com"
+        "name": "David Mwakajonga",
+        "email": "mwakajongadavid@gmail.com"
     }
     ```
 
