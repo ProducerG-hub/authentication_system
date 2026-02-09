@@ -48,6 +48,7 @@ Before running this project, ensure you have the following installed:
     ```sql
     CREATE DATABASE auth_db;
     
+    -- Connect to the newly created database
     \c auth_db
 
     -- Create Roles table (referenced by users)
@@ -59,6 +60,12 @@ Before running this project, ensure you have the following installed:
     -- Insert default roles
     INSERT INTO roles (name) VALUES ('user'), ('admin');
 
+    -- Creating A foreign key for roles table in users table
+    ALTER TABLE users
+    ADD CONSTRAINT fk_role
+    FOREIGN KEY (role_id) REFERENCES roles(id);
+
+    -- Create Users table with role_id as a foreign key to roles table
     CREATE TABLE users (
         id SERIAL PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
@@ -110,8 +117,8 @@ The base URL for all authentication routes is: `http://localhost:3000/api/auth`
 -   **Body:**
     ```json
     {
-        "name": "John Doe",
-        "email": "john@example.com",
+        "name": "David Francis",
+        "email": "david@example.com",
         "password": "securepassword123"
     }
     ```
@@ -122,7 +129,7 @@ The base URL for all authentication routes is: `http://localhost:3000/api/auth`
 -   **Body:**
     ```json
     {
-        "email": "john@example.com",
+        "email": "david@example.com",
         "password": "securepassword123"
     }
     ```
@@ -134,7 +141,7 @@ The base URL for all authentication routes is: `http://localhost:3000/api/auth`
 -   **Body:** (Fields to update)
     ```json
     {
-        "name": "John Updated",
+        "name": "David Updated",
         "email": "newemail@example.com"
     }
     ```
@@ -165,3 +172,24 @@ The base URL for all authentication routes is: `http://localhost:3000/api/auth`
 ## License
 
 This project is licensed under the ISC License.
+
+## Contributing
+Contributions are welcome! Please fork the repository and submit a pull request for any improvements or bug fixes.
+
+## Contact
+For any questions or issues, please open an issue on the GitHub repository or contact me at [gwamakamwakabuta@gmail.com].
+
+## Acknowledgements
+-   [Node.js](https://nodejs.org/)
+-   [Express.js](https://expressjs.com/)
+-   [PostgreSQL](https://www.postgresql.org/)
+-   [bcrypt](https://www.npmjs.com/package/bcrypt)
+-   [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
+-   [dotenv](https://www.npmjs.com/package/dotenv)
+-   [pg](https://www.npmjs.com/package/pg)
+-   [nodemon](https://www.npmjs.com/package/nodemon)
+-   [GitHub](https://github.com/)
+
+## Author
+-   **Gwamaka Mwakabuta** - [GitHub](https://ProducerG-hub.github.io/) - [Email](mailto:gwamakamwakabuta@gmail.com)
+-   **Mlue_Tech** - Company in Tanzania
