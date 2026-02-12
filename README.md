@@ -135,9 +135,10 @@ The base URL for all authentication routes is: `http://localhost:3000/api/auth`
         "password": "securepassword123"
     }
     ```
--   **Response:** Returns a JWT token upon success.
+-   **Response (Successful Login):** Returns a JWT token upon success with a feedback message i.e authenticated successfully.
+-   **Response (Failed Login):** Returns an error message indicating invalid credentials or inactive account i.e. Bad credentials or account is inactive.
 
-### 3. Update User
+### 3. Update User (Admin Only)
 -   **URL:** `/update/:id`
 -   **Method:** `POST`
 -   **Body:** (Fields to update)
@@ -148,11 +149,11 @@ The base URL for all authentication routes is: `http://localhost:3000/api/auth`
     }
     ```
 
-### 4. Delete User
+### 4. Delete User (Admin Only)
 -   **URL:** `/delete/:id`
 -   **Method:** `POST`
 
-### 5. Find User
+### 5. Find User (Authenticated Users)
 -   **URL:** `/find/:id`
 -   **Method:** `POST`
 
@@ -179,7 +180,7 @@ This project is licensed under the ISC License.
 Contributions are welcome! Please fork the repository and submit a pull request for any improvements or bug fixes.
 
 ## Contact
-For any questions or issues, please open an issue on the GitHub repository or contact me at [gwamakamwakabuta@gmail.com].
+For any questions or issues, please open an issue on the GitHub repository or contact me at [gwamakamwakabuta@gmail.com] or contact us at [mluetechnologytz@gmail.com].
 
 ## Acknowledgements
 -   [Node.js](https://nodejs.org/)
@@ -194,4 +195,4 @@ For any questions or issues, please open an issue on the GitHub repository or co
 
 ## Author
 -   **Gwamaka Mwakabuta** - [GitHub](https://ProducerG-hub.github.io/) - [Email](mailto:gwamakamwakabuta@gmail.com)
--   **Mlue_Tech** - Company in Tanzania
+-   **Mlue_Technology** - Company in Tanzania - [Email](mailto:mluetechnologytz@gmail.com)
