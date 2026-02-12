@@ -11,7 +11,9 @@ It is designed to be a solid foundation for any application requiring user authe
 -   **Profile Management**: Update user details.
 -   **User Deletion**: Remove user accounts.
 -   **User Search**: Find specific user details.
--   **Security**: Uses `bcrypt` for password hashing and `jsonwebtoken` (JWT) for secure transmission.
+-   **Security**: Uses `bcrypt` for password hashing and `jsonwebtoken` (JWT) for secure transmission also checking if a user has logged in recently or not before proceeding with other actions that require the user to be authenticated.
+-   **Role-Based Access Control**: Admin users can manage other users.
+-   **Active User Management**: Only active users can log in.
 
 ## Tech Stack
 
